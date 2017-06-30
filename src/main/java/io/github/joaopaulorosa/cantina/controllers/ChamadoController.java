@@ -5,16 +5,14 @@
  */
 package io.github.joaopaulorosa.cantina.controllers;
 
+import io.github.joaopaulorosa.cantina.business.ChamadoBus;
 import java.util.List;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import io.github.joaopaulorosa.cantina.data.Chamado;
-import io.github.joaopaulorosa.cantina.data.ChamadoDAO;
-import io.github.joaopaulorosa.cantina.data.StatusChamado;
-import java.sql.SQLException;
-import java.util.ArrayList;
+import io.github.joaopaulorosa.cantina.enumerado.chamado.StatusChamado;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ws.rs.Consumes;
@@ -37,9 +35,9 @@ public class ChamadoController {
     @Path("/")
     public List<Chamado> listChamados(){
         try{
-            ChamadoDAO chamadoDAO = new ChamadoDAO();
-            return chamadoDAO.listar();
-        }catch(SQLException | ClassNotFoundException e){
+            ChamadoBus chamadoBus = new ChamadoBus();
+            return chamadoBus.listar();
+        }catch(Exception e){
             Logger.getLogger(ChamadoController.class.getName()).log(Level.SEVERE, null, e);
             throw new WebApplicationException(Response.Status.INTERNAL_SERVER_ERROR);
         }
@@ -50,9 +48,9 @@ public class ChamadoController {
     @Path("{id}/")
     public Chamado getChamado(@PathParam("id") long id){
         try{
-            ChamadoDAO chamadoDAO = new ChamadoDAO();
-            return chamadoDAO.selecionar(id);
-        }catch(SQLException | ClassNotFoundException e){
+            ChamadoBus chamadoBus = new ChamadoBus();
+            return chamadoBus.selecionar(id);
+        }catch(Exception e){
             Logger.getLogger(ChamadoController.class.getName()).log(Level.SEVERE, null, e);
             throw new WebApplicationException(Response.Status.INTERNAL_SERVER_ERROR);
         }
@@ -63,12 +61,10 @@ public class ChamadoController {
     @Path("/")
     public Response create(Chamado chamado){
         try{
-            chamado.setStatus(StatusChamado.NOVO);
-            
-            ChamadoDAO chamadoDAO = new ChamadoDAO();
-            chamadoDAO.inserir(chamado);
+            ChamadoBus chamadoBus = new ChamadoBus();
+            chamadoBus.inserir(chamado);
             return Response.status(Response.Status.OK).build();
-        }catch(SQLException | ClassNotFoundException e){
+        }catch(Exception e){
             Logger.getLogger(ChamadoController.class.getName()).log(Level.SEVERE, null, e);
             throw new WebApplicationException(Response.Status.INTERNAL_SERVER_ERROR);
         }
@@ -81,10 +77,10 @@ public class ChamadoController {
         try{
             chamado.setStatus(StatusChamado.PENDENTE);
             
-            ChamadoDAO chamadoDAO = new ChamadoDAO();
-            chamadoDAO.alterar(chamado);
+            ChamadoBus chamadoBus = new ChamadoBus();
+            chamadoBus.alterar(chamado);
             return Response.status(Response.Status.OK).build();
-        }catch(SQLException | ClassNotFoundException e){
+        }catch(Exception e){
             Logger.getLogger(ChamadoController.class.getName()).log(Level.SEVERE, null, e);
             throw new WebApplicationException(Response.Status.INTERNAL_SERVER_ERROR);
         }
@@ -94,10 +90,10 @@ public class ChamadoController {
     @Path("{id}/")
     public Response delete(@PathParam("id") long id){
         try{
-            ChamadoDAO chamadoDAO = new ChamadoDAO();
-            chamadoDAO.excluir(id);
+            ChamadoBus chamadoBus = new ChamadoBus();
+            chamadoBus.excluir(id);
             return Response.status(Response.Status.OK).build();
-        }catch(SQLException | ClassNotFoundException e){
+        }catch(Exception e){
             Logger.getLogger(ChamadoController.class.getName()).log(Level.SEVERE, null, e);
             throw new WebApplicationException(Response.Status.INTERNAL_SERVER_ERROR);
         }
@@ -108,13 +104,13 @@ public class ChamadoController {
     @Path("{id}/")
     public Response concluir(@PathParam("id") long id){
         try{
-            ChamadoDAO chamadoDAO = new ChamadoDAO();
+            ChamadoBus chamadoBus = new ChamadoBus();
             
-            Chamado c = chamadoDAO.selecionar(id);
+            Chamado c = chamadoBus.selecionar(id);
             c.setStatus(StatusChamado.FECHADO);
-            chamadoDAO.alterar(c);
+            chamadoBus.alterar(c);
             return Response.status(Response.Status.OK).build();
-        }catch(SQLException | ClassNotFoundException e){
+        }catch(Exception e){
             Logger.getLogger(ChamadoController.class.getName()).log(Level.SEVERE, null, e);
             throw new WebApplicationException(Response.Status.INTERNAL_SERVER_ERROR);
         }
