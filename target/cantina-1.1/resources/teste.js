@@ -52,8 +52,18 @@ angular.module("TesteApp", [])
         })
     };
     
-    self.concluir = function(){
-        alert("TO DO");
+    self.concluir = function(chamado){
+        self.chamado = chamado;
+        
+        $http({
+           method: 'PUT',
+           url: urlBase + 'chamados/' + self.chamado.id,
+           data: self.chamado
+        }).then(function successCallback(response){
+            self.atualizarTabela();
+        }, function errorCallback(response){
+            self.ocorreuErro();
+        });
     };
     
     self.ocorreuErro = function(){
