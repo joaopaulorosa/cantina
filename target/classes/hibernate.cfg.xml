@@ -4,11 +4,11 @@
     <session-factory>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/cantina</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/cantinaold</property>
         <property name="hibernate.connection.username">joao</property>
         <property name="hibernate.connection.password">joao</property>
 
-        <property name="hibernate.hbm2ddl.auto">update</property>
+        <!--property name="hibernate.hbm2ddl.auto">update</property-->
         <property name="hibernate.connection.autocommit">false</property>
 
         <mapping class="io.github.joaopaulorosa.cantina.data.Chamado"/>

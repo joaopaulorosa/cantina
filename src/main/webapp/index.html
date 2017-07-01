@@ -1,55 +1,40 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Start Page</title>
+        <title>Cantina Tia Sandra</title>
+        <link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.css">
+        <style>
+            .jumbotron {
+                width: 400px;
+            }
+            .form-control{
+                margin-bottom: 5px;
+                width: 95%;
+            }
+            .logoCantina{
+                width: 400px;
+                margin-top: 20px;
+            }
+            .btn-primary{
+                width: 95%;
+            }
+            .centroPagina{
+                margin-left: auto;
+                margin-right: auto;
+            }
+        </style>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script src="lib/angular/angular.js"></script>
+        <script src="js/cantina.js"></script>
     </head>
-    <body ng-app="TesteApp">
-        <div ng-controller="ChamadoController as controller">
-            <h1>TESTE APP!</h1>
-            <h5>{{controller.usuario}}</h5>
-            
-            <div style="border: 1px solid black;" data-ng-show="controller.chamado">
-                <label for="chamadoId">ID: </label>
-                <input type="number" id="chamadoId" data-ng-model="controller.chamado.id" disabled>
-                <br>
-                <label for="assunto">Assunto: </label>
-                <input type="text" id="assunto" data-ng-model="controller.chamado.assunto">
-                <br>
-                <label for="mensagem">Mensagem: </label>
-                <textarea rows="4" id="mensagem" data-ng-model="controller.chamado.mensagem"></textarea>
-                <br>
-                <button type="button" data-ng-click="controller.salvar()">Salvar</button>
-                <button type="button" data-ng-click="controller.chamado = undefined">Cancelar</button>
-            </div>
-            
-            <div style="border: 1px solid black;" data-ng-show="!controller.chamado">
-                <button type="button" data-ng-click="controller.novo()">Novo Chamado</button>
-                <br>
-                <table border="1">
-                    <tr>
-                        <th>ID</th>
-                        <th>Assunto</th>
-                        <th>Status</th>
-                        <th>Mensagem</th>
-                        <th>Opções</th>
-                    </tr>
-                    <tr data-ng-repeat="chamado in controller.chamados">
-                        <td>{{chamado.id}}</td>
-                        <td>{{chamado.assunto}}</td>
-                        <td>{{chamado.status}}</td>
-                        <td>{{chamado.mensagem}}</td>
-                        <td>
-                            <button type="button" data-ng-click="controller.alterar(chamado)">Alterar</button>
-                            <button type="button" data-ng-click="controller.deletar(chamado)">Excluir</button>
-                            <button type="button" data-ng-show="chamado.status !== 'FECHADO'" data-ng-click="controller.concluir(chamado)">Concluir</button>
-                        </td>
-                    </tr>
-                </table>
-            </div>
-            
+    <body ng-app="CantinaApp" ng-controller="LoginController">
+        <div class="logoCantina centroPagina">
+            <img src="imagens/logo_cantina.jpg" class="logoCantina centroPagina"/>
         </div>
-        <script src="resources/angular.js"></script>
-        <script src="resources/teste.js"></script>
+        <div class="jumbotron centroPagina">
+            <input type="text" class="form-control centroPagina" ng-model="usuario.nome" placeholder="Usuário"/>
+            <input type="password" class="form-control centroPagina" ng-model="usuario.senha" placeholder="Senha"/>
+            <button class="btn btn-primary btn-block centroPagina" ng-click="doLogin(usuario)">Login</button>
+        </div>
     </body>
 </html>
