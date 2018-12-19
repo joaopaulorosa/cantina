@@ -4,14 +4,17 @@
     <session-factory>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/cantinaold</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/cantina</property>
         <property name="hibernate.connection.username">joao</property>
         <property name="hibernate.connection.password">joao</property>
 
-        <!--property name="hibernate.hbm2ddl.auto">update</property-->
+        <property name="hibernate.hbm2ddl.auto">update</property>
         <property name="hibernate.connection.autocommit">false</property>
 
-        <mapping class="io.github.joaopaulorosa.cantina.data.Chamado"/>
-        <mapping class="io.github.joaopaulorosa.cantina.data.Usuario"/>
+        <mapping class="io.github.joaopaulorosa.cantina.system.model.cadastro.aluno.Aluno"/>
+        <mapping class="io.github.joaopaulorosa.cantina.system.model.cadastro.cadastroconta.CadastroConta"/>
+        <mapping class="io.github.joaopaulorosa.cantina.system.model.cadastro.responsavel.Responsavel"/>
+        <mapping class="io.github.joaopaulorosa.cantina.system.model.cadastro.turma.Turma"/>
+        
     </session-factory>
 </hibernate-configuration>

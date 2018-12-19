@@ -12,3 +12,9 @@ cantinaApp.controller("LoginController", function($scope){
     };
 });
 
+cantinaApp.controller("CadastroContaController", function($scope){
+    
+    $scope.salvarResponsavel = function(responsavel){
+        alert(responsavel.cpf + ' - '+ responsavel.nome);
+    };
+});
