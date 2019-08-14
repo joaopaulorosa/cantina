@@ -16,12 +16,12 @@
     
     <error-page>
         <error-code>404</error-code>
-        <location>/erro.html</location>
+        <location>/jsp/telas/erros/erro.jsp</location>
     </error-page>
 
     <error-page>
         <error-code>500</error-code>
-        <location>/erro.html</location>
+        <location>/jsp/telas/erros/erro.jsp</location>
     </error-page>
     
     <display-name>Cantina Server</display-name>
