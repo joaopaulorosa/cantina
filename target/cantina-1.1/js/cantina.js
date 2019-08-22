@@ -5,16 +5,6 @@
  */
 var cantinaApp = angular.module("CantinaApp", []);
 
-cantinaApp.controller("LoginController", function($scope){
-    
-    $scope.doLogin = function(usuario){
-        alert(usuario.nome + ' - '+ usuario.senha);
-    };
-});
-
-cantinaApp.controller("CadastroContaController", function($scope){
-    
-    $scope.salvarResponsavel = function(responsavel){
-        alert(responsavel.cpf + ' - '+ responsavel.nome);
-    };
-});
+getStringSomenteNumeros = function(string){
+	return string.replace(/[^0-9]/g,'');
+};

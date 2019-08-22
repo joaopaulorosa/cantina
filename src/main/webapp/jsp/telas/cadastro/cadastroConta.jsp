@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <html>
-    <%@ include file="/jsp/design/head.jsp" %>
+    <%@ include file="/jsp/head.jsp" %>
     <head>
     	<style type="text/css">
     	.tamanhoPagina {
@@ -26,6 +26,7 @@
 			font-family: sans-serif;		
 		}
     	</style>
+    	<script src="/cantina/js/cadastro/cadastroConta.js"></script>
     </head>
     <body ng-app="CantinaApp" ng-controller="CadastroContaController">
         <div class="logoCantina centroPagina">
@@ -41,11 +42,12 @@
 	        <br>
 	        <div class="centroPagina" style="width: 95%;">
 	            <div class="fonteSecao"><b>Informações do Responsável:</b></div>
-	            <div><input type="text" class="form-control" style="width:50%; " ng-model="responsavel.cpf" placeholder="CPF"/></div>
-           		<div><input type="text" class="form-control" ng-model="responsavel.nome" placeholder="Nome"/></div>
-           		<div><input type="text" class="form-control" ng-model="responsavel.email" placeholder="E-mail"/></div>
+	            <div><input type="text" class="form-control" style="width:50%; " ng-model="responsavel.cpf" placeholder="CPF" 
+	            ng-keyup="buscaevalidaCPF(responsavel);" required/></div>
+           		<div><input type="text" class="form-control" ng-model="responsavel.nome" placeholder="Nome" required/></div>
+           		<div><input type="email" class="form-control" ng-model="responsavel.email" placeholder="E-mail" required/></div>
            		<div><input type="text" class="form-control" ng-model="responsavel.emailAlternativo" placeholder="E-mail Alternativo"/></div>
-           		<div><input type="text" class="form-control" style="width:50%;" ng-model="responsavel.cepEndereco" placeholder="CEP"/></div>
+           		<div><input type="text" class="form-control" style="width:50%;" ng-model="responsavel.cepEndereco" placeholder="CEP" required/></div>
            		<div><input type="text" class="form-control" ng-model="responsavel.logradouroEndereco" placeholder="Endereço"/></div>
            		<div>
            			<table style="width: 100%;">
@@ -79,21 +81,21 @@
        			<div><input type="text" class="form-control" ng-model="responsavel.nomeEmpresa" placeholder="Nome da Empresa"/></div>
        			<div><input type="text" class="form-control" ng-model="responsavel.enderecoEmpresa" placeholder="Endereço Comercial"/></div>
        			<div>
-       				<table>
+       				<table style="width: 100%;">
        					<tr>
-       						<td><input type="text" class="form-control" ng-model="responsavel.dddTelefoneEmpresa" placeholder="DDD Tel Comercial"/></td>
-       						<td><input type="text" class="form-control" ng-model="responsavel.telefoneEmpresa" placeholder="Telefone Comercial"/></td>
-       						<td><input type="text" class="form-control" ng-model="responsavel.ramalTelefoneEmpresa" placeholder="Ramal Comercial"/></td>
-       						<td><input type="text" class="form-control" ng-model="responsavel.emailEmpresa" placeholder="E-mail Comercial"/></td>
+       						<td style="width: 10%"><input type="text" class="form-control" ng-model="responsavel.dddTelefoneEmpresa" placeholder="DDD Tel Comercial"/></td>
+       						<td style="width: 30%"><input type="text" class="form-control" ng-model="responsavel.telefoneEmpresa" placeholder="Telefone Comercial"/></td>
+       						<td style="width: 10%"><input type="text" class="form-control" ng-model="responsavel.ramalTelefoneEmpresa" placeholder="Ramal Comercial"/></td>
+       						<td style="width: 50%"><input type="text" class="form-control" ng-model="responsavel.emailEmpresa" placeholder="E-mail Comercial"/></td>
    						</tr>
                     </table>
               	</div>
               	<br>
               	<div style="width: 50%;" class="centroPagina">
-	                <button class="btn btn-primary btn-block centroPagina" ng-click="salvarResponsavel(responsavel);">Salvar</button>
+              		<button class="btn btn-primary btn-block centroPagina" ng-click="salvarResponsavel(responsavel);">Salvar</button>
 	            </div>
 	        </div>
         </div>
     </body>
-    <%@ include file="/jsp/design/footer.jsp" %>
+    <%@ include file="/jsp/footer.jsp" %>
 </html>
