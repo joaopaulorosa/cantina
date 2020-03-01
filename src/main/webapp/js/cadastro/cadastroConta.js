@@ -3,17 +3,29 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-cantinaApp.controller("CadastroContaController", function($scope){
+cantinaApp.controller("CadastroContaController", 
+		function($scope, $http){
+	
+	var self = this;
     
-	$scope.buscaevalidaCPF = function(responsavel){
-		var cpf = getStringSomenteNumeros(responsavel.cpf);
-		if(cpf.length == 11){
-			alert("Buscar no BD se existe o CPF cadastrado.");
-			//se tiver cadastrado emitir um alerta avisando e jogar para a tela de login
-		} else if(cpf.length > 11){
-			cpf = cpf.substring(0,11);
+	$scope.buscaevalidaCPF = function(responsavel, event){
+		if(event == undefined || event.keyCode == 13){
+			$http({
+	            method: 'GET',
+	            url: 'http://localhost:8080/cantina/cadastroConta/buscaValidaCPF/123'
+	        }).then(function successCallback(response){
+	            alert(response);
+	            alert(responde.data);
+	        }, function errorCallback(response){
+	            //self.ocorreuErro();
+	        });
+		} else {
+			var cpf = getStringSomenteNumeros(responsavel.cpf);
+			if(cpf.length > 11){
+				cpf = cpf.substring(0,11);
+			}
+			responsavel.cpf = cpf;
 		}
-		responsavel.cpf = cpf;
 	};
 	
 	

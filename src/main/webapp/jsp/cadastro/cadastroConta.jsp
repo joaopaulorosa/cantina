@@ -43,7 +43,7 @@
 	        <div class="centroPagina" style="width: 95%;">
 	            <div class="fonteSecao"><b>Informações do Responsável:</b></div>
 	            <div><input type="text" class="form-control" style="width:50%; " ng-model="responsavel.cpf" placeholder="CPF" 
-	            ng-keyup="buscaevalidaCPF(responsavel);" required/></div>
+	            ng-keyup="buscaevalidaCPF(responsavel, $event);" ng-blur="buscaevalidaCPF(responsavel);" required/></div>
            		<div><input type="text" class="form-control" ng-model="responsavel.nome" placeholder="Nome" required/></div>
            		<div><input type="email" class="form-control" ng-model="responsavel.email" placeholder="E-mail" required/></div>
            		<div><input type="text" class="form-control" ng-model="responsavel.emailAlternativo" placeholder="E-mail Alternativo"/></div>

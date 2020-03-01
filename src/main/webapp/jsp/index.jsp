@@ -35,7 +35,7 @@
           <table style="width: 100%;">
            <tr>
             <td align="center" width="50%"><a href="footer.html" class="fonteLinks">Esqueci minha senha</a></td>
-            <td align="center" width="50%"><a href="cadastroConta" class="fonteLinks">Quero me cadastrar</a></td>
+            <td align="center" width="50%"><a href="cadastroConta/" class="fonteLinks">Quero me cadastrar</a></td>
            </tr>
           </table>
      	</div>
