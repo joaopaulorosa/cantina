@@ -7,9 +7,10 @@ package io.github.joaopaulorosa.cantina.controller;
 
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
+
+import io.github.joaopaulorosa.cantina.model.cadastro.responsavel.Responsavel;
 
 /**
  *
@@ -19,26 +20,24 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping(value="cadastroConta")
 public class CadastroContaController {
     
-    @RequestMapping(value="")
+	
+	@RequestMapping(value="")
     public ModelAndView cadastroConta(){
         return new ModelAndView("cadastro/cadastroConta");
     }
     
-    @RequestMapping(value="/buscaValidaCPF/{cpf}")
-    public boolean buscaValidaCPF(@PathVariable String cpf) {
+    @RequestMapping(value="/validaCPF/{cpf}")
+    public boolean validaCPF(@PathVariable String cpf) {
     	System.out.println(cpf);
     	return true;
     }
     
-    
-    
-    @RequestMapping(value="/userdetails",method=RequestMethod.GET,produces="application/json")
-    public UserDetails userdetails(){
-        UserDetails userDetails = new UserDetails();
-        userDetails.setName("JavaInterviewPoint");
-        userDetails.setDepartment("Blogging");
-        return userDetails;
+    @RequestMapping(value="/buscaCPF/{cpf}")
+    public Responsavel buscaCPF(@PathVariable String cpf) {
+    	System.out.println(cpf);
+    	
+    	return null;
     }
     
-    
+  
 }
