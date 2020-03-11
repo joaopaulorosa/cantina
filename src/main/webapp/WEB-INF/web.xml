@@ -13,17 +13,17 @@
     <welcome-file-list>
         <welcome-file>/jsp/index.jsp</welcome-file>
     </welcome-file-list>
-    
+    <!--
     <error-page>
         <error-code>404</error-code>
         <location>/jsp/erros/erro.jsp</location>
     </error-page>
-
+ 
     <error-page>
         <error-code>500</error-code>
         <location>/jsp/erros/erro.jsp</location>
     </error-page>
-    
+     -->
     <display-name>Cantina Server</display-name>
     <servlet>
         <servlet-name>SpringConfig</servlet-name>
