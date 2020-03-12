@@ -3,20 +3,25 @@ package io.github.joaopaulorosa.cantina.model;
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-public class HbnDefaultDAO<T> implements DefaultDAO<T> {
+public class DefaultDAOImpl<T> implements DefaultDAO<T> {
 
 	private Class<T> classe;
 
 	@Autowired
 	private SessionFactory sessionFactory;
 
-	public HbnDefaultDAO() {
+	private Session getSession() {
+		return sessionFactory.getCurrentSession();
+	}
+
+	public DefaultDAOImpl() {
 		ParameterizedType parameterizedType = (ParameterizedType) getClass().getGenericSuperclass();
 		classe= (Class<T>) parameterizedType.getActualTypeArguments()[0];
 	}

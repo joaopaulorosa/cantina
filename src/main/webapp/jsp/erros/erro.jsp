@@ -23,7 +23,7 @@ and open the template in the editor.
     </head>
     <body>
     	<div class="logoCantina centroPagina">
-            <img src="imagens/logo_cantina.jpg" class="logoCantina centroPagina"/>
+            <img src="/imagens/logo_cantina.jpg" class="logoCantina centroPagina"/>
         </div>
         <div>A página que você está tentando acessar não está disponível no momento.</div>
     </body>

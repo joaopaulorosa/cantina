@@ -13,7 +13,7 @@
     <welcome-file-list>
         <welcome-file>/jsp/index.jsp</welcome-file>
     </welcome-file-list>
-    <!--
+    
     <error-page>
         <error-code>404</error-code>
         <location>/jsp/erros/erro.jsp</location>
@@ -23,15 +23,16 @@
         <error-code>500</error-code>
         <location>/jsp/erros/erro.jsp</location>
     </error-page>
-     -->
+    
     <display-name>Cantina Server</display-name>
     <servlet>
-        <servlet-name>SpringConfig</servlet-name>
-        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-    </servlet>
+		<servlet-name>SpringConfig</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SpringConfig</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
     
-    <servlet-mapping>
-        <servlet-name>SpringConfig</servlet-name>
-        <url-pattern>/</url-pattern>
-    </servlet-mapping>
 </web-app>

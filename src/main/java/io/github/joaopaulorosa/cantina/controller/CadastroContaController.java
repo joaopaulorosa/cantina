@@ -19,25 +19,25 @@ import io.github.joaopaulorosa.cantina.model.cadastro.responsavel.Responsavel;
 @RestController
 @RequestMapping(value="cadastroConta")
 public class CadastroContaController {
-    
-	
+
+
 	@RequestMapping(value="")
-    public ModelAndView cadastroConta(){
-        return new ModelAndView("cadastro/cadastroConta");
-    }
-    
-    @RequestMapping(value="/validaCPF/{cpf}")
-    public boolean validaCPF(@PathVariable String cpf) {
-    	System.out.println(cpf);
-    	return true;
-    }
-    
-    @RequestMapping(value="/buscaCPF/{cpf}")
-    public Responsavel buscaCPF(@PathVariable String cpf) {
-    	System.out.println(cpf);
-    	
-    	return null;
-    }
-    
-  
+	public ModelAndView cadastroConta(){
+		return new ModelAndView("cadastro/cadastroConta");
+	}
+
+	@RequestMapping(value="/validaCPF/{cpf}")
+	public boolean validaCPF(@PathVariable String cpf) {
+		System.out.println(cpf);
+		return true;
+	}
+
+	@RequestMapping(value="/buscaCPF/{cpf}")
+	public Responsavel buscaCPF(@PathVariable String cpf) {
+		System.out.println(cpf);
+
+		return null;
+	}
+
+
 }
