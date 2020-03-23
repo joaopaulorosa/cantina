@@ -18,7 +18,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import io.github.joaopaulorosa.cantina.model.old.enumerado.email.TipoEmail;
+import io.github.joaopaulorosa.cantina.model.old.enumerado.TipoEmail;
 
 /**
  *

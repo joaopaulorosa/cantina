@@ -5,12 +5,15 @@
  */
 package io.github.joaopaulorosa.cantina.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import io.github.joaopaulorosa.cantina.model.cadastro.responsavel.Responsavel;
+import io.github.joaopaulorosa.cantina.model.Responsavel;
+import io.github.joaopaulorosa.cantina.service.ResponsavelService;
 
 /**
  *
@@ -20,23 +23,22 @@ import io.github.joaopaulorosa.cantina.model.cadastro.responsavel.Responsavel;
 @RequestMapping(value="cadastroConta")
 public class CadastroContaController {
 
+	@Autowired
+	private ResponsavelService responsavelService;
 
-	@RequestMapping(value="")
+	@RequestMapping(value="", method=RequestMethod.GET)
 	public ModelAndView cadastroConta(){
 		return new ModelAndView("cadastro/cadastroConta");
 	}
 
 	@RequestMapping(value="/validaCPF/{cpf}")
 	public boolean validaCPF(@PathVariable String cpf) {
-		System.out.println(cpf);
-		return true;
+		return responsavelService.isCPF(cpf);
 	}
 
 	@RequestMapping(value="/buscaCPF/{cpf}")
 	public Responsavel buscaCPF(@PathVariable String cpf) {
-		System.out.println(cpf);
-
-		return null;
+		return responsavelService.buscaPorCPF(cpf);
 	}
 
 

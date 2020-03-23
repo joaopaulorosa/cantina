@@ -21,7 +21,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import io.github.joaopaulorosa.cantina.model.old.enumerado.boleto.Pago;
+import io.github.joaopaulorosa.cantina.model.old.enumerado.Pago;
 
 /**
  *
